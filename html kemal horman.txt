@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=”utf-8”>
+<title>Gimnazija Obala Sarajevo</title>
+<link rel=”stylesheet” href=”style.css”>
+<style>
+h1 {color: red;
+background-color: blue;
+padding: 4rem;
+background-color: blue;
+margin: 50px;
+outline: 1px solid red;
+text-decoration: underline;
+<!--Ovdje sam promjenio pozadinu, postavio marginu, podvukao tekst i u0kvirio ga-->
+}
+p1 {
+padding: 0rem;
+text-shadow: 2px 2px 2px purple;
+outline: 2px solid red;
+<!--Ovdje sam iskoristio text shadow i outline-->
+}
+p2 {
+padding: 0rem;
+transform: rotate(40deg);
+}
+p3 {
+padding: 0rem;
+margin: 0px;
+transform: matrix(2, 1, 1, 2, 70, -50);
+<!--Na 2. paragrafu sam iskoristio 2D transformaciju, a na 3. sam iskoristio 3D transformaciju-->
+}
+p4:hover {
+cursor: pointer;
+padding: 0rem;
+background-color: blue;
+transition-property: width;
+<!--Ovdje sam iskoristio tranziciju-->
+}
+p5:hover {
+pointer: cursor;
+padding: 0rem;
+background-color: blue;
+position: relative;
+animation-name: text;
+animation-duration: 4s;
+<!--Ovdje sam napravio animaciju za 5. paragraf-->
+}
+@keyframes text{
+0% {background-color: red;}
+25% {background-color: green;}
+50% {background-color: yellow;}
+75% {background-color: brown;}
+100% {background-color: black;}
+}
+</style>
+</head>
+<h1>Gimnazija Obala</h1>
+<p1>Web programiranje</p1>
+<p2>Razvoj mobilnih aplikacija</p2>
+<p3>Softver inzinjering</p3>
+<p4>Programiranje</p4>
+<p5>Informatika</p5>
+<p6 id="text">Mouse over</p6>
+<!--Ovdje sam napravio treći element sa trećim i četvrtim eventom-->
+<body>
+<!--Ovdje sam napravio dva dugmeta: jedno ima onclick event, a drugo ima ondblclick event-->
+<input type="button" value="klik" onclick="Buttonclick()" />
+<input type="button" value="2xklik" ondblclick="buttonclick()" />
+<!--Ovdje sam napravio "tijelo" kalkulatora za množenje i dijeljenje-->
+<form>
+1. Broj: <input type="text" id="broj1">
+2. Broj: <input type="text" id="broj2">
+Operator:
+<select id="operator">
+<option value="div">Dijeljenje</option>
+<option value="mul">Množenje</option>
+</select>
+<button type="button" onclick="calc()">=</button>
+</form>
+<div id="rezultat"></div>
+<!--Ovdje sam napravio "tijelo" za izmjenu riječi-->
+<input id="unosrijeci">
+<button type="button" onclick="rijec()">Modifikuj</button>
+<div id="moo">Ovdje će se ispisati modifikovana riječ</div>
+<table>
+<tr>
+<th>ime:</th>
+<th>prezime:</th>
+<th>prosječna ocjena:</th>
+<th>vladanje:</th>
+</tr>
+<tr>
+<td>Kemal</td>
+<td>Horman</td>
+<td>3,9</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Gimnatija Obala</td>
+<td>IV4</td>
+<td>Kosović Rijana</td>
+<td>18</td>
+</tr>
+<tr>
+<td>ICT</td>
+<td>Matematika</td>
+<td>Programiranje</td>
+<td>Engleski</td>
+</tr>
+<tr>
+<td>MORN</td>
+<td>WEB Programiranje</td>
+<td>Software Engineering</td>
+<td>Filozofija</td>
+</tr>
+<tr>
+<td>Latinski</td>
+<td>Vjeronauka</td>
+<td>Njemački</td>
+<td>Razvoj mobilnih aplikacija</td>
+</tr>
+</table>
+<ol>
+<li>Žirafa</li>
+<li>Gepard</li>
+<li>Pas</li>
+<li>Krava</li>
+<li>Ovca</li>
+<li>Konj</li>
+<li>Panda</li>
+<li>Papagaj</li>
+<li>Tigar</li>
+<li>Slon</li>
+</ol>
+<form action=”contactform.php” method=”get”>
+<input type=”text” name=”ime i prezime” value=”Kemal Horman”>
+Muški: <input type=”radio” name=”spol” value=”Muški”>
+Ženski: <input type=”radio” name=”spol” value=”Ženski”>
+RMA: <input type=”radio” name=”Odaberi predmet” value=”RMA”>
+WEB: <input type=”radio” name=”Odaberi predmet” value=”WEB”>
+Programiranje: <input type=”radio” name=”Odaberi predmet” value=”Programiranje”>
+<input type=”checkbox” name=”Posjedujem” value:”Lična karta”>
+<input type=”checkbox” name=”Posjedujem” value:”Pasoš”>
+<input type=”checkbox” name=”Posjedujem” value:”Vozačka dozvola>”
+<input type=”submit” name=”potvrdi”>
+</form>
+<a href=”pocetna.html”>Gimnazija Obala Sarajevo</a>
+<a href=”html_images.asp”>Nova stranica</a>
+<a href=”pocetna.html”>Slika nije učitana</a>
+</body>
+<!--Ovdje sam napravio skriptu i funkcije za svaki dio ovog zadatka-->
+<script>
+function calc(){
+var a = parseInt(document.querySelector("#broj1").value);
+var b = parseInt(document.querySelector("#broj2").value);
+var op = document.querySelector("#operator").value;
+let text= document.querySelector("#text").value;
+var calculate;
+if (op == "mul") {
+calculate = a * b;
+}
+else if (op == "div"){
+calculate = a / b;
+}
+document.querySelector("#rezultat").innerHTML = calculate;
+}
+function Buttonclick(){
+alert("KLIK")
+}
+function buttonclick(){
+alert("2xKLIK")
+}
+text.onmouseover=function(){
+text.innerHTML="Mouse out"
+}
+text.onmouseout=function(){
+text.innerHTML="Mouse over"
+}
+function rijec() {
+var somethingstored;
+somethingstored = document.getElementById("unosrijeci").value;
+document.getElementById("moo").innerHTML = modifikovanje(somethingstored);
+}
+function modifikovanje(somethingstored) {
+var mod;
+var pos = somethingstored.search("Moo");
+if (somethingstored == "") {
+mod = "Moo";
+} 
+else if (pos >= 0) {
+mod = somethingstored;
+} 
+else {
+mod = "Moo" + somethingstored;
+}
+return mod;
+}
+</script>
+</html>
